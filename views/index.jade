@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 MongoDB Atlas Workshop Restaurant Data Importer
+
+        // import form
+        form(method='POST' action='/')
+          div.form-group
+            label(for='name') Host:
+            input#host.form-control(type='text', placeholder='Atlas host string' name='host')
+          div.form-group
+            label(for='user') User:
+            input#user.form-control(type='user', placeholder='Atlas user name' name='user')
+          div.form-group
+            label(for='pw') Password:
+            input#pw.form-control(type='password' name='password')
+          button.btn.btn-primary(type='submit') Import
