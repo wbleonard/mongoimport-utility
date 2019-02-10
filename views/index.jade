@@ -1,10 +1,13 @@
 extends layout
 
+link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css', rel='stylesheet')
+
 block content
   .main.container
     .row
       .col-md-6.col-md-offset-3
         h1.display-4.m-b-2 MongoDB Atlas Workshop Restaurant Data Importer
+        p This utility imports the #[a(href="https://raw.githubusercontent.com/mongodb/docs-assets/primer-dataset/primer-dataset.json#") primer-dataset] into your cluster.
 
         // import form
         form(method='POST' action='/')
@@ -18,3 +21,5 @@ block content
             label(for='pw') Password:
             input#pw.form-control(type='password' name='password')
           button.btn.btn-primary(type='submit') Import
+
+          p= result
