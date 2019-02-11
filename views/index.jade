@@ -7,7 +7,8 @@ block content
         h1.display-4.m-b-2 MongoDB Atlas Workshop Restaurant Data Importer
         p 
          | This utility imports the #[a(href="https://raw.githubusercontent.com/mongodb/docs-assets/primer-dataset/primer-dataset.json#" target="_blank") primer-dataset] 
-         | into your Atlas cluster. Copy the host value from the #[a(href="https://docs.atlas.mongodb.com/command-line-tools/" target="_blank") Command Line Tools] mongoimport string in Atlas.
+         | into your Atlas cluster. Copy the host value from the #[a(href="https://docs.atlas.mongodb.com/command-line-tools/" target="_blank") Command Line Tools]
+         |  mongoimport string in Atlas. Note, don't forget to whitelist the IP address this app is running on in Atlas.
         
 
         // import form
@@ -22,5 +23,5 @@ block content
             label(for='pw') Password:
             input#pw.form-control(type='password' name='password')
           button.btn.btn-primary(type='submit') Import
-
+          p
           p= result
