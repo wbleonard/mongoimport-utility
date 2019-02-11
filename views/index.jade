@@ -1,22 +1,23 @@
 extends layout
 
-link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css', rel='stylesheet')
-
 block content
   .main.container
     .row
       .col-md-6.col-md-offset-3
         h1.display-4.m-b-2 MongoDB Atlas Workshop Restaurant Data Importer
-        p This utility imports the #[a(href="https://raw.githubusercontent.com/mongodb/docs-assets/primer-dataset/primer-dataset.json#") primer-dataset] into your cluster.
+        p 
+         | This utility imports the #[a(href="https://raw.githubusercontent.com/mongodb/docs-assets/primer-dataset/primer-dataset.json#" target="_blank") primer-dataset] 
+         | into your Atlas cluster. Copy the host value from the #[a(href="https://docs.atlas.mongodb.com/command-line-tools/" target="_blank") Command Line Tools] mongoimport string in Atlas.
+        
 
         // import form
         form(method='POST' action='/')
           div.form-group
             label(for='name') Host:
-            input#host.form-control(type='text', placeholder='Atlas host string' name='host')
+            input#host.form-control(type='text', placeholder='Workshop-shard-0/workshop-shard-00-00-n70fe.azure.mongodb.net:27017,workshop-shard-00-01-n70fe.azure.mongodb.net:27017,workshop-shard-00-02-n70fe.azure.mongodb.net:27017' name='host') 
           div.form-group
             label(for='user') User:
-            input#user.form-control(type='user', placeholder='Atlas user name' name='user')
+            input#user.form-control(type='user', placeholder='brian' name='user')
           div.form-group
             label(for='pw') Password:
             input#pw.form-control(type='password' name='password')

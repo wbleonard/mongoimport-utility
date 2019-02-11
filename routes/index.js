@@ -19,10 +19,10 @@ router.post("/", function(req, res) {
     " --password " +
     req.body.password +
     " --authenticationDatabase admin --db Workshop --collection Restaurants --type JSON --file primer-dataset.json";
+  console.log(command)
   exec(command, function(error, stdout, stderr) {
     if (!error) {
-      console.log(stdout)
-      var result = "Data imported successfully";
+      var result = "imported 25359 documents";
       console.log(result);
       res.render("index", { result: result });
     } else {
