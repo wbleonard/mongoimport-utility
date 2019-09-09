@@ -7,20 +7,37 @@ block content
         h1.display-4.m-b-2 MongoDB Atlas Workshop Restaurant Data Importer
         p 
          | This utility imports the #[a(href="https://raw.githubusercontent.com/mongodb/docs-assets/primer-dataset/primer-dataset.json#" target="_blank") primer-dataset] 
-         | into your Atlas cluster. Copy the host value from the #[a(href="https://docs.atlas.mongodb.com/command-line-tools/" target="_blank") Command Line Tools]
-         |  mongoimport string in Atlas. Note, don't forget to whitelist the IP address this app is running on in Atlas.
+         | into your Atlas cluster. 
+        p
+        h3 Step 1: Whitelist Workshop Importer IP
+        p
+         | Add a temporary whitelist entry to Atlas for the IP address of this import tool (found in the browser's address bar above):
+        d
+        p
+        img(src="img/whitelist.png")
+        p 
+        d
+        h3 Step 2: Copy Import Command
+        | Navigate to the the #[a(href="https://docs.atlas.mongodb.com/command-line-tools/" target="_blank") Command Line Tools] for your cluster and click the <b>Copy</b> button for the #[a(href="https://docs.mongodb.com/manual/reference/program/mongoimport" target = "_blank") mongoimport] command and paste the value below.
+        d 
+        p
+        img(src="img/copy.png")
+        p
+        d
         
+        h3 Step 3: Import the data
+        p
 
         // import form
         form(method='POST' action='/')
           div.form-group
-            label(for='name') Host:
-            input#host.form-control(type='text', placeholder='Workshop-shard-0/workshop-shard-00-00-n70fe.azure.mongodb.net:27017,workshop-shard-00-01-n70fe.azure.mongodb.net:27017,workshop-shard-00-02-n70fe.azure.mongodb.net:27017' name='host') 
+            label(for='name') mongoimport Copied Value:
+            input#host.form-control(type='text', placeholder='mongoimport --host workshop-shard-0/workshop-shard-00-00-5grkt.mongodb.net:27017,workshop-shard-00-01-5grkt.mongodb.net:27017,workshop-shard-00-02-5grkt.mongodb.net:27017 --ssl --username brian --password <PASSWORD> --authenticationDatabase admin --db <DATABASE> --collection <COLLECTION> --type <FILETYPE> --file <FILENAME>' name='host') 
           div.form-group
-            label(for='user') User:
+            label(for='user') Atlas Database User:
             input#user.form-control(type='user', placeholder='brian' name='user')
           div.form-group
-            label(for='pw') Password:
+            label(for='pw') Atlas Database User's Password:
             input#pw.form-control(type='password' name='password')
           button.btn.btn-primary(type='submit') Import
           p
