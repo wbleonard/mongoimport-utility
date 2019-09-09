@@ -7,13 +7,30 @@ router.get("/", function(req, res, next) {
 });
 
 router.post("/", function(req, res) {
-  console.log(req.body.host);
+  console.log("host received: " + req.body.host);
   console.log(req.body.user);
+
+  
+  // Support copying the entire command from the Command Line Tools page
+  host = req.body.host;
+  startPoint = host.indexOf("--host");
+  endPoint = host.lastIndexOf("27017");
+  
+  if (startPoint > 0) { 
+    startPoint = startPoint + 7 // Adjust to beginning of host value
+    endPoint = endPoint + 6     // Adjust to end of host value
+    host = host.slice(startPoint, endPoint)
+  } else {
+    // Assume the host was parsed out manually
+    host = req.body.host
+  }
+
+  console.log("host used: " + host);
 
   var exec = require("child_process").exec;
   var command =
     "mongoimport --host " +
-    req.body.host +
+    host +
     " --ssl --username " +
     req.body.user +
     " --password " +
