@@ -1,3 +1,3 @@
 # mongoimport-utility
 
-![screen shot][import.png]
+![screen shot][importer.png]
