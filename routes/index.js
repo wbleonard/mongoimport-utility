@@ -42,7 +42,7 @@ router.post("/", function(req, res) {
     req.body.user +
     " --password " +
     req.body.password +
-    " --authenticationDatabase admin --db Workshop --collection Restaurants --type JSON --file primer-dataset.json";
+    " --authenticationDatabase admin --db Workshop --collection Restaurants --type JSON --file primer-dataset.json --drop";
   console.log(command)
   exec(command, function(error, stdout, stderr) {
     if (!error) {
