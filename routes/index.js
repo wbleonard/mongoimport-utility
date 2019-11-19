@@ -8,13 +8,20 @@ router.get("/", function(req, res, next) {
 
 router.post("/", function(req, res) {
   console.log("host received: " + req.body.host);
-  console.log(req.body.user);
+  console.log("user received: " + req.body.user);
 
   
   // Support copying the entire command from the Command Line Tools page
   host = req.body.host;
   startPoint = host.indexOf("--host");
   endPoint = host.lastIndexOf("27017");
+
+  console.log("endPoint: " + endPoint);
+ 
+  if (endPoint === -1) { // The cluster is sharded
+	endPoint = host.lastIndexOf("27016");
+	console.log("endPoint: " + endPoint);
+  }
   
   if (startPoint > 0) { 
     startPoint = startPoint + 7 // Adjust to beginning of host value
